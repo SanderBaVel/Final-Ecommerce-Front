@@ -5,11 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClientesComponent } from './components/clientes/clientes.component';
+import { NavbarComponent } from './components/commons/navbar/navbar.component';
+import { provideHttpClient } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientesComponent,
+    NavbarComponent,
+    
     
   ],
   imports: [
@@ -17,7 +22,7 @@ import { ClientesComponent } from './components/clientes/clientes.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
