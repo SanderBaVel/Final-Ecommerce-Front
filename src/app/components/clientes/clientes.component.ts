@@ -22,6 +22,7 @@ export class ClientesComponent {
     private clienteService: ClientesService,
     private formBuilder: FormBuilder) {
     this.clienteForm = this.formBuilder.group({
+      id_cliente: [null], 
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
       direccion: ['', Validators.required],
@@ -55,7 +56,6 @@ export class ClientesComponent {
     } else {
       this.clienteForm.reset();
     }
-
     this.modalService.open(modal, {
       centered: true,
      
@@ -76,7 +76,7 @@ export class ClientesComponent {
     if (this.isEditMode) {
       this.clienteService.updateCliente(clienteData).subscribe({
         next: (updateCliente) => {
-          const index = this.clientes.findIndex(c => c.id_cliente === this.selectedCliente.id_cliente);
+          let index = this.clientes.findIndex(c => c.id_cliente === this.selectedCliente.id_cliente);
           if (index !== -1) {
             this.clientes[index] = updateCliente;
           }
