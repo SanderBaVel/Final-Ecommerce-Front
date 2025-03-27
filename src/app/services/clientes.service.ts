@@ -19,7 +19,7 @@ export class ClientesService {
     return this.http.post<Clientes>(this.apiUrl, cliente);
   }
   updateCliente(cliente: Clientes): Observable<Clientes> {
-    return this.http.put<Clientes>(this.apiUrl + cliente.id_cliente, cliente);
+    return this.http.put<Clientes>(`${this.apiUrl}${cliente.id_cliente}`, cliente);
   }
   deleteCliente(id: number): Observable<Clientes> {
     return this.http.delete<Clientes>(this.apiUrl + id);

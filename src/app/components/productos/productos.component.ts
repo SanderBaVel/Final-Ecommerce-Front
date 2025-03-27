@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+
 import { Productos } from '../../models/Productos.models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductosService } from '../../services/productos.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-productos',
@@ -12,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrl: './productos.component.css'
 })
 export class ProductosComponent {
+
 
   producto: Productos[] = [];
   productoForm: FormGroup;
