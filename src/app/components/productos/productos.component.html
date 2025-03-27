@@ -1,1 +1,99 @@
-<p>productos works!</p>
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-black text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Lista de Productos</h3>
+            <button class="btn btn-success btn-sm" (click)="abrirModal(modalAgregar)">
+                <i class="bi bi-plus-circle"></i> Agregar Productos
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let producto of producto; let i = index">
+                            <td>{{producto.id}}</td>
+                            <td>{{producto.nombre}}</td>
+                            <td>{{producto.descripcion}}</td>
+                            <td>{{producto.precio}}</td>
+                            <td>{{producto.stock}}</td>
+
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-info"
+                                        (click)="abrirModal(modalAgregar, producto)">Editar</button>
+                                    <button class="btn btn-danger btn-sm"
+                                        (click)="producto.id ? deleteProductos(producto.id) : null">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+        <!-- Estructura del modal (sin funcionalidad) -->
+        <ng-template #modalAgregar let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar Nuevo Prodcuto</h5>
+                <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+            </div>
+            <div *ngIf="abrirModal" class="modal-body">
+
+
+                <form  [formGroup]="productoForm">
+                    <input hidden formControlName="id" readonly>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input id="nombre" class="form-control" formControlName="nombre" pattern="^\S.*$"
+                            placeholder="Nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">DESCRIPCION</label>
+                        <input id="descripcion" class="form-control" formControlName="descripcion" pattern="^\S.*$"
+                            placeholder="DESCRIPCION">
+                    </div>
+                    <div class="mb-3">
+                        <label for="precio" class="form-label">PRECIO</label>
+                        <input id="precio" type="number" class="form-control" formControlName="precio"
+                            placeholder="precio" min="0"  required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="stock" class="form-label">STOCK</label>
+                        <input id="stock" type="number" class="form-control" formControlName="stock" placeholder="stock"
+                            min="0" required>
+                    </div>
+
+
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+                        <button type="button" class="btn btn-primary" (click)="onSubmit()"
+                            [disabled]="productoForm.invalid">
+                            {{ isEditMode ? 'Actualizar' : 'Guardar' }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </ng-template>
+
+    </div>
+</div>
+

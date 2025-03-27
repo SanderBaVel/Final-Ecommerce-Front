@@ -8,7 +8,10 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { NavbarComponent } from './components/commons/navbar/navbar.component';
 import { provideHttpClient } from '@angular/common/http';
 import { ProductosComponent } from './components/productos/productos.component';
+
 import { PedidosComponent } from './components/pedidos/pedidos.component';
+
+
 
 
 @NgModule({
@@ -17,7 +20,11 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
     ClientesComponent,
     NavbarComponent,
     ProductosComponent,
+
     PedidosComponent,
+
+    
+
     
     
   ],
