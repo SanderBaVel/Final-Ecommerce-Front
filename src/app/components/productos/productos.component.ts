@@ -5,6 +5,7 @@ import { ProductosService } from '../../services/productos.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-productos',
   standalone: false,
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2';
   styleUrl: './productos.component.css'
 })
 export class ProductosComponent {
+
 
   producto: Productos[] = [];
   productoForm: FormGroup;
@@ -189,6 +191,7 @@ export class ProductosComponent {
 
 
 }
+
 
 
 

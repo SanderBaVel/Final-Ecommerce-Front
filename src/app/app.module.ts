@@ -10,12 +10,15 @@ import { provideHttpClient } from '@angular/common/http';
 import { ProductosComponent } from './components/productos/productos.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     ClientesComponent,
     NavbarComponent,
     ProductosComponent,
+    
+
     
     
   ],
