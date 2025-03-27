@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pedidos } from '../../models/pedidos.models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PedidosService } from '../../services/pedidos.service';
 import { Clientes } from '../../models/clientes.models';
 import { ClientesService } from '../../services/clientes.service';
+import { PedidoDTO } from '../../models/pedidos.dto';
 
 @Component({
   selector: 'app-pedidos',
@@ -12,8 +13,9 @@ import { ClientesService } from '../../services/clientes.service';
   templateUrl: './pedidos.component.html',
   styleUrl: './pedidos.component.css'
 })
-export class PedidosComponent {
-  pedidos: Pedidos [] = [];
+export class PedidosComponent implements OnInit{
+  //pedidos: Pedidos [] = [];
+  pedidos: PedidoDTO[] = [];
   clientesDisponibles: Clientes[] = []
   pedidosForm: FormGroup;
   tituloModal: string = 'agregar pedidos';
@@ -35,19 +37,34 @@ export class PedidosComponent {
   }
 
   ngOnInit(){
-    this.loadPedidos
+    this.loadPedidos();
+    this.loadClientes();
   }
-  loadPedidos(){
+
+
+  loadPedidos(): void {
     this.pedidosService.getPedidos().subscribe({
 
-      next: data =>{
+      next: data => {
         this.pedidos = data;
-        console.log('Pedidos cargados:', this.pedidos); 
+        console.log(this.pedidos)
+      }
+    })
+  }
+
+
+  loadClientes(): void {
+    this.clientesService.getClientes().subscribe({
+      next: (data) => {
+        this.clientesDisponibles = data;
+      },
+      error: (error) => {
+        console.error('Error cargando clientes:', error);
       }
     });
   }
 
-  abrirModal(modal: any, pedido?: Pedidos): void {
+  abrirModal(modal: any, pedido?: PedidoDTO): void {
     this.isEditMode = !!pedido;
     this.tituloModal = this.isEditMode ? 'Editar Pedido' : 'Nuevo Pedido';
     
