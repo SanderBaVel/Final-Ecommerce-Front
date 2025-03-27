@@ -13,6 +13,7 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,8 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
     ProductosComponent,
 
     PedidosComponent,
+
+    
 
     
     
