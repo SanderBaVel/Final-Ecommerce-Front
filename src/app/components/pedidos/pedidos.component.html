@@ -21,8 +21,9 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let pedido of pedidos; let i = index">
-                            <td>{{pedido.id}}</td>
-                            <td>{{pedido.idCliente}} </td>
+                            <td>{{i + 1}}</td>
+                            <td hidden>{{pedido.id}}</td>
+                            <td>{{pedido.clienteNombre}} </td>
                             <td>{{pedido.fechaCreacion | date:'shortDate'}}</td>
                             <td>{{pedido.total | currency}}</td>
                             <td>{{pedido.estado}}</td>

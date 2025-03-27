@@ -6,5 +6,5 @@ export interface Pedidos{
     cliente: Clientes;
     total: number;
     fechaCreacion: Date;
-    estado: String;
+    estado: string;
 }
